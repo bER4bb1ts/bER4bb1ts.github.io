@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+
+    <meta name="theme-color" content="#151515" />
+    <meta name="msapplication-navbutton-color" content="#151515" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <link rel="shortcut icon" href="../assets/img/favicon.png" />
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>Take Me Out to the Ball Game</title>
+    <meta property="og:locale" content="en_US" />
+    <!-- End Jekyll SEO tag -->
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <a id="a-title" href="/">
+          <h1>Take Me Out to the Ball Game</h1>
+        </a>
+        <h2><a href="../">b3R4bb1t$.com</a> | <a href="shr1mpy.html">Previous</a></h2>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="makes">Category: Cryptography</h1>
+        <span>Level: </span><a href="javascript:void(0);">Medium</a><br /><br />
+        <h2 id="challenge-description">Challenge</h2>
+        <blockquote>
+          <p>
+            I like baseball, do you?? I think grand slams are the coolest!!!
+            `16DLF592KN4KKI9BNJHCM179GML30PB32235B04MDM145GJD04N9NFL`
+          </p>
+        </blockquote>
+
+        <h2 id="solution">Solution</h2>
+        <p>
+          At first, I'm not good at baseball and i don't know the game rules<br />
+          when i saw baseball i didn't know he meant base encoding i recently
+          discovered.<br></bnr> but my solve way was that i took this hash and put it to
+          cyberchef and decoder.fr<br> also i did the same with crackstation.net to
+          identify the hash but i got nothing so i moved to baseball game and i
+          searched for the game rules and the information began to intertwine
+          when i'm reading the rules i figured out that "A game is played out
+          between two teams, each made up of 9 players"<br><br> and "The object of
+          baseball is to score more runs than your opponent. The idea is to hit
+          the ball thrown at you as far as you can before running around 4 bases
+          to complete a run"<br><br> i really don't understand these words correctly but
+          i thought with hacker mindset challenge says "baseball" so it starts
+          with base for me i considered it for base encoding and while reading
+          about rules it says "each made up of 9 players"<br> so i had to make sure
+          that cyberchef it not a stupid i got a base29 encoded and i put it to
+          cyberchef and nothing can't recognize it as decoder.fr so i made a python
+          script and i tested the fake one and it worked, i grabbed the
+          challenge encoded and put it and it worked too and returned the flag
+          :DD<br> 
+          <br>finally i got the Challenge
+        </p>
+
+        <div class="language-py highlighter-rouge">
+          <div class="highlight">
+            <pre class="highlight"><code>
+
+<span style="color: grey;"># encoded</span>
+
+enc = "16DLF592KN4KKI9BNJHCM179GML30PB32235B04MDM145GJD04N9NFL"
+
+<span style="color: grey;"># encoded base</span>
+
+base = int(enc, 29)
+
+<span style="color: grey;"># convert to hex</span>
+
+convert_to_hex = hex(base)
+
+<span style="color: grey;"># remove first two 0x from the hex</span>
+
+convert_to_hex = convert_to_hex[2:]
+
+<span style="color: grey;"># convert to bytes then to string and print it</span>
+
+print(bytes.fromhex(convert_to_hex).decode("utf-8"))
+
+<span style="color: grey;"># FLAG: byuctf{4ll_th3_b4s3s_4r3_10ad3d!}</span>
+            </code></pre>
+            <img src="imgs/base.png" alt="" srcset="" />
+          </div>
+        </div>
+        <details>
+          <summary>FLAG</summary>
+          byuctf{4ll_th3_b4s3s_4r3_10ad3d!}
+        </details>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+
+    <meta name="theme-color" content="#151515" />
+    <meta name="msapplication-navbutton-color" content="#151515" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <link rel="shortcut icon" href="../assets/img/favicon.png" />
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>Sticky Key</title>
+    <meta property="og:locale" content="en_US" />
+
+    <!-- End Jekyll SEO tag -->
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <a id="a-title" href="javascript:void(0)">
+          <h1>Sticky Key - Writeup</h1>
+        </a>
+        <h2><a href="../">b3R4bb1t$.com</a> | <a href="shr1mpy.html">Previous</a></h2>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="makes">Category: Forensics</h1>
+        <span>Level: </span><a href="javascript:void(0);">Hard</a><br /><br />
+        <h2 id="challenge-description">Challenge</h2>
+        <blockquote>
+          <p>
+            I just got this email from my friend. I think he was trying to tell
+            me something important, but it just looks like random symbols.
+            <br />
+            <br />
+            Subject: ˆ ˇ˙ˆ˜˚ Â¥ ´¥∫øå®∂ ˆß ∫®ø˚´˜
+            <br />
+            <br />
+            Contents:
+            ˆ †˙ˆ˜˚ µ¥ ˚´¥∫øå®∂ ˆß ∫®ø˚´˜≥ ˆ ∑åß π¬å˜˜ˆ˜© †ø †´¬¬ ¥ø¨ †˙ˆß ∫¨† ˆæµ ˜ø† ß¨®´ ˙ø∑ ¥ø¨ ∑ˆ¬¬ ®´å∂ ˆ†≥ Óøπ´ƒ¨¬¬¥ ¥ø¨ çå˜ ƒˆ˜∂ å ∑å¥≥ ∫¥¨ç†ƒ”∂ø˜†—¬´å√´—ßø∂å—∫¥—¥ø¨®—˚´¥∫øå®∂’
+          </p>
+        </blockquote>
+
+        <h2 id="solution">Solution #1</h2>
+        <p>
+          For the first time I realized that is something
+          called [alt code]<br />
+          .[reference](https://scratch.mit.edu/discuss/m/topic/19568/) doing
+          some research i decided to make a dictionary with all
+          letters/specialchars & alt codes and symbols and loop on them with the symbols given,<br />
+          so i made a small python script to automate this process >>.
+          <br /><br />
+          <img src="imgs/script.png" alt="" />
+          <br /><br /><br />
+        </p>
+
+        <div class="language-py highlighter-rouge">
+          <div class="highlight">
+            <pre class="highlight"><code>
+letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890-=!@#$%^&*()_+{} .,"'
+
+symbols = 'ÅıÇÎ´Ï˝ÓˆÔÒÂ˜Ø∏Œ‰Íˇ¨◊„˛Á¸å∫ç∂´ƒ©˙ˆ∆˚¬µ˜øπœ®ß†¨√∑≈¥Ω¡™£¢∞§¶•ªº–≠⁄€‹›ﬁﬂ‡°·‚—±”’ ≥≤æ'
+
+flag = {}
+
+for symbol in range(len(symbols)):
+    flag[symbols[symbol]] = letters[symbol]
+    pass
+
+encrypted_message = """
+ˆ ˇ˙ˆ˜˚ Â¥ ´¥∫øå®∂ ˆß ∫®ø˚´˜
+ˆ †˙ˆ˜˚ µ¥ ˚´¥∫øå®∂ ˆß ∫®ø˚´˜≥ ˆ ∑åß π¬å˜˜ˆ˜© †ø †´¬¬ ¥ø¨ †˙ˆß ∫¨† ˆæµ ˜ø† ß¨®´ ˙ø∑ ¥ø¨ ∑ˆ¬¬ ®´å∂ ˆ†≥ Óøπ´ƒ¨¬¬¥ ¥ø¨ çå˜ ƒˆ˜∂ å ∑å¥≥ ∫¥¨ç†ƒ”∂ø˜†—¬´å√´—ßø∂å—∫¥—¥ø¨®—˚´¥∫øå®∂’
+"""
+
+for key in encrypted_message:
+    if key in flag:
+        print(''.join(flag[key]), end='')
+
+        
+# FLAG: byuctf{dont_leave_soda_by_your_keyboard}
+            </code></pre>
+            <p>
+              <br />
+              <h3>Soluation #2</h3>
+              you can easily search for symbols translator,<br />
+              [https://lingojam.com/SymbolLanguageTranslator]<br />
+              and put the given symbols and the site will return the flag simply
+              >><br />
+              <br /><br />
+            </p>
+            <img src="imgs/translator.png" alt="" />
+          </div>
+        </div>
+        <details>
+          <summary>FLAG</summary>
+          byuctf{dont_leave_soda_by_your_keyboard}
+        </details>
+      </section>
+    </div>
+  </body>
+  <script src="b.js"></script>
+</html>

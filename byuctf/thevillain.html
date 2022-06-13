@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+
+    <meta name="theme-color" content="#151515" />
+    <meta name="msapplication-navbutton-color" content="#151515" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <link rel="shortcut icon" href="../assets/img/favicon.png" />
+
+    <title>The Villain</title>
+    <meta name="generator" content="Jekyll v3.9.2" />
+    <meta property="og:title" content="Makes" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="b3R4bb1t$" />
+
+    <meta property="og:site_name" content="b3R4bb1t$ writeups" />
+    <meta property="og:type" content="b3R4bb1t$" />
+    <meta name="twitter:card" content="b3R4bb1t$" />
+    <meta property="twitter:title" content="b3R4bb1t$" />
+    <!-- End Jekyll SEO tag -->
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <a id="a-title" href="javascript:void(0)">
+          <h1>The Villain - Writeup</h1>
+        </a>
+        <h2><a href="../">b3R4bb1t$.com</a> | <a href="shr1mpy.html">Previous</a></h2>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="makes">Category: Forensics</h1>
+        <span>Level: </span><a href="javascript:void(0);">Medium</a><br /><br />
+        <h2 id="challenge-description">Challenge</h2>
+        <blockquote>
+          <p>
+            I've been hacked! Someone took a precious photo of mine and secured
+            it in a password-protected ZIP folder. They taunted me by saying
+            that the password is based on their personal life, but I'll never
+            figure out who it is. I beg to differ! But all I've been able to
+            find so far is this photo of my friend communicating with them, can
+            you help me?
+          </p>
+        </blockquote>
+
+        <h2 id="solution">Solution</h2>
+        <p>
+          Challenge provides 2 files,
+          <br />
+          one Screenshot.png and encrypted.zip i downloaded both and started
+          with
+          <br />
+          the img first i extracted the img metadata and i found a google drive
+          link
+          [GooleDrive](https://docs.google.com/document/d/1BnPoqSl7GQOST__5iR7Xv7lYB8kSIxFsLYSq9PXaJFY/edit)
+          <br />
+          <img src="imgs/villainempty.png" alt="">
+          <br />
+          nothing interesting for the first time and the zip file requires a
+          password i fired pw cracker while it was running i returned to drive
+          <br />
+          again and i started to copy the content once i highlighted the content
+          while copying i saw there is a small sentence: Message for Astoria
+          Villin
+          <br>
+          <img src="imgs/astoria.png" alt="">
+          <br>
+           of course i started search with this name to get any social accounts or something like that
+          <br />
+          and i found a fb account and twitter with this username
+          <br />
+          [Facebook](https://www.facebook.com/astoria.villin) |
+          [Twitter](https://twitter.com/AstoriaVillin)
+          <img src="imgs/astoriafb-.png" alt="">
+          <br> 
+          i started to discover the account
+          stared to collect everything that can be used for password and the
+          <br />
+          challenge says: They taunted me by saying that the password is based
+          <br />
+          on their personal life so the password related to her life i collected
+          her husband name: Jonathan and her pet name: Hoppy Boi husband not
+          <br />
+          worked so i tried pet name without spaces: HoppyBoi and it worked, and
+          got the flag from the zip file
+          <br />
+          <img src="imgs/flag.png" alt="">
+          <br />
+          <hr>
+           FLAG: byuctf{b3t_Y0U_c4nt_f1nd_D33ZNU7S!}
+        </p>
+        <details>
+          <summary>FLAG</summary>
+          byuctf{b3t_Y0U_c4nt_f1nd_D33ZNU7S!}
+        </details>
+      </section>
+    </div>
+  </body>
+  <script src="b.js"></script>
+</html>

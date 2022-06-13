@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+
+    <meta name="theme-color" content="#151515" />
+    <meta name="msapplication-navbutton-color" content="#151515" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="shortcut icon" href="../assets/img/favicon.png" />
+
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>XQR</title>
+    <meta property="og:locale" content="en_US" />
+    <!-- End Jekyll SEO tag -->
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a id="a-title" href="javascript:void(0)">
+                <h1>XQR - Writeup</h1>
+            </a>
+            <h2>
+                <a href="../">b3R4bb1t$.com</a> | <a href="shr1mpy.html">Previous</a>
+            </h2>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="main_content">
+            <h1 id="makes">Category: Cryptography</h1>
+            <span>Level: </span><a href="javascript:void(0);">Hard</a><br /><br />
+            <h2 id="challenge-description">Challenge</h2>
+            <blockquote>
+                <p>
+                I love QR codes! But maybe it's true what they say about having too much of a good thing...
+                </p>
+            </blockquote>
+
+            <h2 id="solution">Solution</h2>
+            <p>
+                <a href="javascript:void(0)">XQR was a hard rated cryptography challange and it was in a whole
+                    another level.</a><br><br>
+                <p style="color:chocolate;">i solved this challenge with my teammate [<span>0x3ashry</span>] full respect for him
+                    please..</p>
+                <br />
+                <img src="imgs/XQR.png" alt="" srcset="" />
+
+                <br>
+                <blockquote>
+                    <p>It doesn’t contain except one massive image contain thousands of QR Codes</p>
+                    <img src="imgs/massive.png" alt="">
+                    I first tried to read the first QR Code but it gave me 85TK6eDfb{SXQfvR70VXX !!!
+                    then i asked my friend to help me with any idea,
+                    Through trial and errors we got that the size of each qr code is 27 pixels length and width, so we
+                    thought that cutting the whole image into smaller QR codes will make it easier
+                    we made a python script to make that for us.
+                    <pre><code>
+from PIL import Image
+
+imggg = Image.open('xqr.png')
+inc = 27
+for i in range(0, 2727 , 27):
+    for j in range(0, 2727, 27):
+        box = (j, i, j+27, i+27) # left, top, right, buttom
+        img2 = imggg.crop(box)
+        img2.save(r'QRCodes/myimage_' + str(i) + '_' + str(j) + '_cropped.jpg')</code></pre>
+                </blockquote>
+                <blockquote>
+                    Now we have 10,201 QR Codes stored in file called QRCodes, And we stucked for a while…
+
+                    Then my friend realized from the name of the challange that XQR is near to XOR so what if we XORed all the QR
+                    codes together…
+
+                    we started with reading them using cv2 library from python-opencv and then in order to make my trick
+                    work
+                    he changed the readed image to binary 0 and 1, black and white pixels. Then he XORed each pixel with
+                    the
+                    same pixels in all the other 10,201 qr codes and saved it, Then displaying the result shows:
+                    <pre><code>
+import cv2
+import matplotlib.pyplot as plt
+import os
+
+QR_dir = os.listdir(r"QRCodes")
+qr_codes = []
+for qr in QR_dir:
+    gray = cv2.imread("QRCodes/" + qr, cv2.COLOR_BGR2GRAY)
+    _, binary = cv2.threshold(gray, 150, 1, cv2.THRESH_BINARY_INV)
+    qr_codes.append(binary)
+
+for i in range(27):
+    for j in range(27):
+        for q in range(len(qr_codes)):
+            if q+1 == 10201:
+                break
+            qr_codes[0][i][j] ^= qr_codes[q+1][i][j]
+
+plt.imshow(qr_codes[0])
+plt.show()
+                    </code></pre>
+                    <img src="imgs/XQR_2.png" alt=""><br>
+                    Scanning it…<br>
+                    BOOOOOOOOOOOOOOOOOOOM !!! We got the flag byuctf{x0r_i5_u5eful}
+                </blockquote>
+            </p>
+            <details>
+                <summary>FLAG</summary>
+                byuctf{x0r_i5_u5eful}
+            </details>
+        </section>
+    </div>
+</body>
+<script src="b.js"></script>
+
+</html>

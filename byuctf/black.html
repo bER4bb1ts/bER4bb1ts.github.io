@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+
+    <meta name="theme-color" content="#151515" />
+    <meta name="msapplication-navbutton-color" content="#151515" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <link rel="shortcut icon" href="../assets/img/favicon.png" />
+
+    <title>Black</title>
+    <meta property="og:locale" content="en_US" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <a id="a-title" href="javascript:void(0)">
+          <h1>Black - Writeup</h1>
+        </a>
+        <h2><a href="../">b3R4bb1t$.com</a> | <a href="shr1mpy.html">Previous</a></h2>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="makes">Category: Web</h1>
+        <span>Level: </span><a href="javascript:void(0);">Medium</a><br /><br />
+        <h2 id="challenge-description">Challenge</h2>
+        <blockquote>
+          <p>
+            One cool thing about Vue is that it's really hard to figure out
+            what's going on in the page Flag format - `byuctf{Phrase Separated
+            By Spaces}` `http://black.byuctf.xyz`
+          </p>
+        </blockquote>
+
+        <h2 id="solution">Solution</h2>
+        <p>
+          This Challenge made me a bit blind and hate vue js :D<br />
+          lets go, first thing the website wasn't have anything interested
+          inputs/vulenrabilities and vue js obuscated the js code to make it
+          hard to readable so i scrolled at the bottom and fired inspector and
+          started see how website change.<br>
+          while i was moving my mouse away there
+          was a word has fade in "have fun!"<br />
+          i understand how's website going in inspector there were some divs
+          with ids pt1, pt2 once i moused over on them they showed parties for
+          photos qr codes and be added in site source in inspector, so i
+          collected all qr codes were 8 photos<br>
+          <img src="imgs/partiesblack.png" alt="">
+          <br><br>
+          <a href="javascript:void(0);">and i combined them as a one
+          valid QR Code,</a><br><br>
+          <img src="imgs/combined.png" alt="">
+          <br>
+          after i scanned it i got a url
+          "(http://black.byuctf.xyz/index_/)"<br />
+          another page like previous one i used inspector to see the elements
+          there was a video i changed the width and height to see it, its a
+          rickroll video :( but i noticed there were some words shown in the
+          video not shown in the real video on youtube i wrote them : ***And Our
+          Home Oh Native Land Canada*** looks like be a canada anthem maybe i
+          just slaped it on google and first result was wiki article, and yeah
+          it a canada anthem i compared the original anthem with my ones and i
+          re-arranged them to be a flag and i got Black Challenge Finally
+
+          <hr>
+          FLAG: byuctf{Oh Canada Our Home And Native Land}
+        </p>
+
+        <div class="language-py highlighter-rouge">
+          <div class="highlight">
+            <img src="imgs/black.png" alt="" srcset="" />
+
+          </div>
+        </div>
+        <details>
+          <summary>FLAG</summary>
+          byuctf{Oh Canada Our Home And Native Land}
+        </details>
+      </section>
+    </div>
+  </body>
+  <script src="b.js"></script>
+</html>
